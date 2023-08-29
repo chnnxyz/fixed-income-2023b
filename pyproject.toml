@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "fixed-income-tools"
+version = "0.1.0"
+description = "Contains tools for solving fixed income problesm."
+authors = ["chnnxyz <s@chnn.xyz>"]
+readme = "README.md"
+packages = [{include = "fixed_income_tools"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10, <3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
