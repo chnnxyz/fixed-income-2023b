@@ -1,0 +1,393 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\newcommand\hyperset{\hypersetup{colorlinks=true}}
+\hypersetup{colorlinks=true}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{Fixed Income Notes}
+\author{S. Ruiz de Aguirre}
+\makeindex
+\begin{document}
+\maketitle
+{\hypersetup{hidelinks} \tableofcontents}
+\newpage
+\section{Debt Instruments and Markets}
+\subsection{Overview and Types}
+One of the main components in fixed income are debt instruments. Debt instruments are sold to refinance debt such as corporate or public debt. The key types of debt instruments are:
+\begin{itemize}
+\item \textbf{Treasury:} Based on a country's public debt.
+\item \textbf{Asset-Backed:} Commonly based on private loans such as credit cards, auto loans, etc.
+\item \textbf{Money Markets:} Commercial papers and deposits from money markets.
+\item \textbf{Mortgage-Based:} Mortgages and mortgage-backed securities
+\item \textbf{Corporate Debt:} Debt from private firms. Bonds issued by corporations.
+\item \textbf{Federal Agency:} Debt from federal agencies such as Farm Credit System.
+\item \textbf{Municipal Issues:} Similar to Treasury, but based on municipal-level public debt.
+\end{itemize}
+
+It is important to note that these instruments can also be the underlying assets of derivatives such as \emph{forwards}, \emph{swaps} and \emph{options}.
+
+\subsection{Complexities}
+Bonds tend to have different prices based on their maturities. Additionally, it is common to see that interest rates also change depending on the security's maturity. These value changes also affect forward rates and swap rates. Additionally, non-federal instruments tend to have higher complexities such as deposit rates, mortgage-backing, foreign exchange conversion rates, etc.
+
+\subsection{Sovereign Debt Markets}
+Sovereign debt markets are markets selling instruments based on government debt. The most common one is the \emph{Government Bond}.
+
+\begin{definition}
+A \emph{\textbf{Government Bond}} is a bond issued by a national government, usually denominated in its own currency and with a promise to pay periodic interest payments and to repay the face value on the maturity date.
+\end{definition}
+
+
+These bonds finance the operation of a are commonly considered safe, but are not risk-free as a government defaulting is unlikely but not zero-probability and interest rate and future prices can affect the real value of the nominal value stated in the bond.
+
+Bonds can be \emph{Zero Coupon} (meaning they only pay the face value at maturity) or \emph{Coupon} (meaning they pay the face value at maturity as well as offer periodic payments.
+
+\subsection{The Money Market}
+The Money Market refers to the market for short term loans. Some key concepts for this market are:
+\begin{itemize}
+\item \textbf{Federal Funds Rate:} Interest rate in the USA for inter-financial institution loans.
+\item \textbf{Eurodollar Rate:} Rate for deposits in US Dollars at any institution not in the US.
+\item \textbf{LIBOR:} British rate for uncollateralized lending between banks with high credit score.
+\item \textbf{Some relevant instruments:}
+\begin{itemize}
+\item \textbf{Commercial Paper:} Unsecured notes with a maturity of at most 270 days
+\item \textbf{Certificate of Deposit (CD):} Issued to investors who deposit a certain amount for a defined period of time at a bank.
+\end{itemize}
+\end{itemize}
+
+\subsection{The Repo Market}
+The repo market comprises two types of agreements:
+\begin{itemize}
+\item \textbf{Repurchase Agreement (Repo):} The seller of a security agrees to buy the security back by a certain day at a determined price.
+\item \textbf{Reverse Repo:} The buyer of a security agrees to sell the security back at a defined price and date.
+\end{itemize}
+The following sections dive deeper on both concepts.
+
+\subsubsection{Repo}
+Some miscellaneous facts and concepts are as follows.
+\begin{itemize}
+\item The difference between the buyback price and the initial selling price is known as \textbf{repo rate}.
+\item Repos allow banks to constantly swap their holdings of government paper.
+\item All repo agreements are collateralized.
+\item Repo transactions are not risk-free, as credit risk is inherent to any loan-based transaction. To reduce credit risk in Repos, we commonly see these strategies:
+\begin{itemize}
+\item Lenders requiring a margin or \textbf{hair cut} of commonly 1-3%
+\item Collateral levels and loan balances can be adjusted if the market value of the collateral changes too much. This is called \textbf{Market-To-Market Adjustment}.
+\end{itemize}
+\end{itemize}
+
+The anatomy of a repo transaction is as follows:
+
+At time $t$ (time of starting the agreement):
+\begin{itemize}
+\item Trader buys $P_t$ of the asset and enters a repo with the dealer, using the bond as a collateral.
+\item The repo dealer provides $(1 - h_c) P_t$.
+\item The number of days $n$ and the repo rate $r$ are determined.
+\end{itemize}
+
+At time $T = t + n$ (end of the agreement):
+\begin{itemize}
+\item Trader recovers assets and sells them at their current price $P_T$.
+\item Trader pays back $(1 - h_c) P_t + r$.
+\item The number of days $n$ and the repo rate are determined.
+\end{itemize}
+
+Equation \eqref{repoint} provides the interest for a repo.
+
+\begin{equation}\label{repoint}
+\mbox{RI} = \frac{(1 -h_c) \cdot P_t \cdot r\cdot n}{360}
+\end{equation}
+
+Equation \eqref{repoprof} shows the profit for the trader.
+
+\begin{equation}\label{repoprof}
+p = P_T - P_t - \mbox{RI}
+\end{equation}
+
+
+\subsubsection{Reverse Repo}
+
+Some miscellaneous facts and concepts are as follows.
+
+\begin{itemize}
+
+\item The difference between initial purchase price and the redemption price is known as \textbf{reverse repo rate}.
+
+\item Reverse repos allow central banks to reduce the cash balance of depository banks.
+
+\end{itemize}
+
+The anatomy of a reverse repo transaction is as follows:
+
+At time $t$ (time of starting the agreement):
+
+\begin{itemize}
+\item Trader borrows bonds from dealer and sells them at price $P_t$.
+\item The number of days $n$ to return the securities and reverse repo rate $r$ are determined.
+\end{itemize}
+
+At time $T = t + n$ (end of the agreement):
+\begin{itemize}
+\item The trader buys the bond at the current market price $P_T$ and gives it back to the repo dealer.
+\end{itemize}
+
+Essentially, in the reverse repo the trader only earns a profit if the price of the security has declined enough. Not only needs $P_t$ be larger than $P_T$, but also needs to account for the \emph{Reverse Repo Interest} RI.
+
+Equation \eqref{rrepoint} provides the interest for a reverse repo.
+
+\begin{equation}\label{rrepoint}
+\mbox{RI} = \frac{r \cdot P_t \cdot n}{360}
+\end{equation}
+
+Equation \eqref{rrepoprof} shows the profit for the trader.
+
+\begin{equation}\label{rrepoprof}
+p = P_t + \mbox{RI} - P_T
+\end{equation}
+
+Of course, if $p < 0$, this is a loss, not a profit.
+
+\subsection{Arbitrage}
+On a market free of arbitrage, there need not exist any opportunity to make a 100\% certain profit with no risk. Therefore, we can define arbitrage as follows.
+
+\begin{definition}
+An \emph{\textbf{arbitrage opportunity}} is a riskless trading strategy that generates a profit from no initial cost.
+\end{definition}
+
+This can also be understood as transactions with guaranteed profits that are higher than any initial cost.
+
+To avoid finding arbitrage, we expect the markets to follow the \emph{Law of One Price}.
+
+\begin{theorem}
+\textbf{\emph{Law of One Price: }} Let $(S_1, \vec{p}_1)$, $(S_2, \vec{p}_2)$ be two pairs where $S_i$ is a security and $\vec{p}_i$ the payoff structure for it. Let $P_i$ be the price for $S_i$. Then the following relation holds.
+
+$$\vec{p}_1 = \vec{p}_2 \Rightarrow P_1 = P_2$$
+\end{theorem}
+
+\section{Present Value and Discounting}
+If you were to ask any agent with rational preferences, receiving \$100 USD today is better than receiving them tomorrow, and way better than receiving them in six months. While this makes sense in any scenario with positive inflation rates, it is also valid in a zero-inflation scenario considering that the agent will always have consumption or investment needs that are better solved at the moment than later.
+
+An interesting note is that this happens at a behavioural level and for any reward, regardless if it is monetary or not. E.g. two food deprived rats will prefer receiving a food pellet now than in two hours.
+
+\begin{definition}
+The \emph{\textbf{Present Value}} of a future payment is the amount that, if invested today at a given interest rate, would result in earning the value of that future payment.
+\end{definition}
+
+Essentially, we could say that an agent could be equally happy with receiving \$97 USD today or \$100 USD in a month, and therefore we can understand that, commonly, $\mbox{FV} > \mbox{PV}$. We then can get to the relationship
+
+$$\mbox{PV} = \gamma\cdot \mbox{FV}$$
+
+Where $\gamma$ is a discount factor and $\gamma < 1$.
+
+We could also assume that the discount factor depends on the time to get paid $T - t$, where $T$ is the time of maturity and $t$ is the time as of today. An interest rate $r(t, T)$, which also depends on time, can also be considered. Then we see that, for $\gamma$.
+\begin{eqnarray}
+\gamma : \mathbb{R}^2 \rightarrow [0, 1) \\
+\gamma = \gamma(r(t, T), t, T) = \gamma(t, T)
+\end{eqnarray}
+
+Two common forms for $\gamma$ are hyperbolic forms (commonly used for cases with discrete compound frequencies) such as
+$$
+\gamma = \frac{1}{(1+c\cdot r(t, T))^{k\cdot(T-t)}}
+$$
+
+And exponential forms (commonly used in continuous compounding) such as
+$$
+\gamma = e^{-r(t,T)\cdot(T-t)}
+$$
+
+Applied to investments, we can jump into the next formal definition.
+
+\begin{definition}
+Let $r_{nc}(t, T)$ be the annualized $n_c$ times compounded interest rate over the time $T - t$, then the \emph{\textbf{discount factor}} $Z(t,T; n_c,r_nc) := Z (t, T)$ is defined as
+
+\begin{equation}\label{hypdct}
+Z(t, T) = \frac{1}{\left( 1 + \frac{r_{nc}(t, T}{nc}\right)^{n_c \cdot (T-t)}}
+\end{equation}
+
+where $n_c$ is the compounding frequency. If $n_c \to \infty$, we obtain the continuous interest rate $r$ from solving
+
+\begin{equation}\label{expdct}
+Z(t, T) = \exp\left(-r(t, T) \cdot (T - t)\right)
+\end{equation}
+\end{definition}
+
+From the second part of definition 4, we obtain the following relationships for going between discrete and continuous compounding.
+
+\begin{eqnarray}
+r = n_c \ln\left( 1 + \frac{r_{nc}}{nc}\right) \\
+r_{nc} = n_c\left(e^{\frac{r}{n_c}} - 1\right)
+\end{eqnarray}
+
+Where $r$ is the continuous compound interest rate and $r_{nc}$ is the annualized $n_c$ times compounded interest.
+
+\subsection{Term Structure}
+\begin{definition}
+A \emph{\textbf{term structure}} (also known as \emph{\textbf{yield curve}}) is a continuous or discrete mapping
+$$r: \mathbb{R}^2 \to \mathbb{R}$$
+
+that associates the current time and maturity $(t, T)$ with a specific value of an interest rate $r(t, T)$.
+
+The difference of long and short term rates is called the \emph{\textbf{slope}} or \emph{\textbf{term spread}} of the term structure.
+\end{definition}
+
+\subsection{Pricing of Bonds}
+\subsubsection{Zero Coupon Bonds}
+As shown in \eqref{zcb}, the price of a Zero Coupon Bond is just its discounted face value, i.e. the present value of its face value.
+
+\begin{equation}\label{zcb}
+P_z(t, T) = Z(t, T) \cdot N
+\end{equation}
+
+Where $N$ is the face value of the bond (commonly \$100 USD), and $Z(t, T)$ is the discount factor as defined in \eqref{hypdct} or \eqref{expdct} depending on the compounding type.
+
+\subsection{Coupon Bonds}
+Let a bond pay an annualized coupon rate of $c$ with a frequency of $n_p$. We can then define the price of the coupon bond as the price of a zero coupon bond with equivalent interest rates and maturity plus the sum of the discounted values of the cash flows from coupons. i.e.
+
+\begin{equation}\label{couponbase}
+P(t,T) = F(t,T) + P_z(t, T)
+\end{equation}
+
+Where $F(t,T)$ are the total cash flows from coupons up until time $T$ and $P_z(t, T)$ is the price of a Zero Coupon bond with maturity $T$. If we define $T_c = \left\lbrace T_i \right\rbrace_{i=1}^m$ as the set of times where a coupon is paid, we can then express $F(t,T)$ as in \eqref{coupdcf}.
+
+\begin{equation}\label{coupdcf}
+F(t,T) = \frac{c\cdot N}{n_p}\sum_{T_i \in T_c, T_i < T}Z(t, T_i)
+\end{equation}
+
+From \eqref{coupdcf}, \eqref{couponbase} and \eqref{zcb} we can group terms to get to \eqref{couponprice}, an explicit form of pricing a coupon bond.
+
+\begin{equation}\label{couponprice}
+P(t,T) = N \cdot \left(\frac{c}{n_p}\sum_{T_i \in T_c, T_i < T}Z(t, T_i) + Z(t,T)\right)
+\end{equation}
+
+Note that some countries can pay coupon rates that vary over time, in such cases $c=c(t)$, and as the coupon rate varies, it is integrated into the sum and the sum becomes \eqref{varcouponprice}.
+\begin{equation}\label{varcouponprice}
+P(t,T) = N \cdot \left(\frac{1}{n_p}\sum_{T_i \in T_c, T_i < T}c(T_i)\cdot Z(t, T_i) + Z(t,T)\right)
+\end{equation}
+
+\subsection{Arbitrage and Coupon Pricing}
+Let's assume a case where, for a coupon bond with price $P$ and a zero coupon bond with price $P_z$, we have:
+$$P < F(t,T) + P_z(t, T)$$
+
+This is either because at least one of the coupon cash flows has a higher discount or the zero coupon bond component is worth less than the actual zero coupon bond. In any case, assuming infinitely divisible assets (or assets with integer divisibility and infinite money), one could sell zero coupon bonds with a face value of $c\cdot N/n_p$ at each of the maturities of the coupon payments, and a zero coupon bond of maturity $T$, and buy a coupon bond at price $P$.
+
+Immediately at the moment of the trade, the arbitrageur would have a positive payoff, and every time the arbitrageur obtains a coupon, the same amount is used to pay treasuries for the investor, then being fully hedged.
+
+This reveals that any coupon bond, either with constant or variable coupon rates can be replicated as a portfolio of only zero-coupon bonds with different maturities and face values.
+
+To obtain this, a linear system of equations of the form $A\mathbf{\theta} = \mathbf{P}$ with a unique solution can be obtained by getting the cash flows in every coupon payment.
+
+From this, we can confirm both the \textbf{Law of One Price} and the fact that it is equivalent to the fact that \textbf{there exists an unique discount factor}.
+
+\section{Bond Yields}
+\subsection{Zero Coupon Bonds}
+From \eqref{zcb} and either \eqref{expdct} or \eqref{hypdct}, for a zero coupon bond held from today until maturity (total time of $T-t$), extracting the rate of returns and renaming it as $y_z$, we obtain:
+\begin{equation}\label{zcbyield}
+y_z = n_c \cdot \left[\left(\frac{N}{P_z(t,T)}\right)^{\frac{1}{n_c\cdot (T-t)}}-1\right]
+\end{equation}
+
+Essentially, we can assume that for zero coupon bonds, $y_z = r(t,T)$.
+
+\subsection{Coupon Bonds}
+For coupon bonds, it is not immediately obvious how to approach this, however, knowing that for zero coupon bonds $y_z = r(t,T)$, and that any coupon bond can be replicated as a portfolio of zero coupon bonds, we could assume a single equivalent yield rate $y$ and rewrite the pricing as in \eqref{coupyield}.
+
+\begin{equation}\label{coupyield}
+P(t,T) = N \cdot\left(\frac{1}{(1 +y/n_c)^m} + \sum_{i=1}^m\frac{c/n_p}{(1 + y/n_c)^i}\right)
+\end{equation}
+
+Solving tor $y$, we get the \textbf{yield to maturity} of the bond. The equivalent equation for continuous compounding is 
+
+\begin{equation}\label{coupyieldcmp}
+P(t,T) = N \cdot\left(e^{-y\cdot(T-t)} + \sum_{i=1}^m\frac{c}{n_p} e^{-y\cdot(T_i-t)}\right)
+\end{equation}
+
+It can be noted that both \eqref{coupyield} and \eqref{coupyieldcmp} are non-linear equations where we need to get the value of y, so numerical methods are required for solving. While there are many traditional methods to do this, it is recommended to work with \href{https://en.wikipedia.org/wiki/Metaheuristic}{metaheuristics} to obtain faster solutions.
+
+\subsection{Yield To Maturity}
+
+Above we mentioned the term \emph{yield to maturity}, which is formally defined as:
+
+\begin{definition}
+The \emph{\textbf{yield to maturity (YTM)}} is the single discount rate, when applied to all the cash flows of the bond, gives its current market/present value.
+\end{definition}
+
+This is also called \emph{Internal Rate of Return (IRR)} in general investments. Additionally, for zero coupon bonds, it always holds that $y=r$.
+
+When comparing two bonds with different payout schemes, it can be counterintuitive or not directly obvious which of the bonds will be a better option. Calculating the YTM of both bonds can tell the investor which instrument has better returns. Keep in mind, however, that the investor may, for example, prefer a bond with lower yields but quicker payouts depending on their needs.
+
+\subsection{Yield To Maturity and Coupon Rate}
+The ratio $c/y$ determines the coupon pricing as
+\begin{itemize}
+\item $c=y\Rightarrow P(t,T) = N$, the bond trades \textbf{at par}.
+\item $c>y\Rightarrow P(t,T) > N$, the bond trades \textbf{at a premium to par}.
+\item $c>y\Rightarrow P(t,T) < N$, the bond trades \textbf{at a discount to par}.
+\end{itemize}
+
+\begin{definition}
+The \emph{\textbf{par yield}} $c_{p,n_p}$ on a bond with maturity $T-t$ and payment frequency $n_p$ is the coupon rate that sets the price of the bond equal to its face value $N$, and is calculated as follows.
+\begin{equation}\label{paryield}
+c_{p,n_p} = \frac{n_p\cdot(1-Z(t,T)}{\sum_{T_i \in T_c, T_i < T}Z(t, T_i)}
+\end{equation}
+\end{definition}
+
+Another interesting term to know is the \emph{Bond-Equivalent Yield (BEY)} which is an annualized representation of yields from bonds with not-annualized yields.
+
+\subsection{Curve Fitting}
+
+Overall, it is important to understand how discounting and yields work at different maturities, even those unavailable to us. Two common methods for curve fitting are:
+
+\begin{itemize}
+\item The \href{https://econpapers.repec.org/article/ucpjnlbus/v_3a60_3ay_3a1987_3ai_3a4_3ap_3a473-89.htm}{Nelson-Siegel Model}.
+\item The \href{https://www.academia.edu/9582801/The_Nelson_Siegel_Svensson_approach}{Nelson-Siegel-Svensson Model}.
+\end{itemize}
+
+Interesting solvers for these algorithms have been found that deal with many of the problems of both models, such as \href{https://arxiv.org/pdf/2108.01760.pdf}{this one using evolutionary computing}.
+
+\section{Market Conventions}
+\subsection{Quoting Conventions}
+Quoting of fixed-income securities might be confusing as they vary by location and type, which means that two similar securities might be quoted at different prices in Mexico and in Italy.
+
+The market has an \emph{ask} price, the minimum price the market is willing to sell at, and a \emph{bid} price, the price at which the market is willing to buy. When quoting securities, both the \emph{bid} and \emph{ask} prices need to be provided. The different between the \emph{bid} and \emph{ask} prices is called the \emph{bid-ask spread}.
+
+Prices in quotations are commonly fractional; however, some markets round up to two decimal places, which has the issue that can be narrowed down to zero.
+
+\subsection{Day Count Conventions}
+There are three common conventions for counting days:
+\begin{itemize}
+\item \textbf{Actual/Actual}: The number of calendar days
+\item \textbf{30/360}: Assume the year has 360 days divided in 12 months of 30 days.
+\item \textbf{Actual/360}: Each month has the actual amount of calendar days but the year is only 360 days long.
+\end{itemize}
+Additionally, each market may have its own set of holiday conventions.
+
+\subsection{Accrued Interest}
+If buying a bond outside of coupon dates, the buyer is still entitled to a portion of the coupon paid based on the number of days after the last coupon payment and the coupon payment total period.
+$$
+\mbox{Accrued Interest} = \mbox{Interest} \cdot\frac{\mbox{Days since last coupon}}{\mbox{Days between two coupon payments}}
+$$
+The invoice price is then the quoted price plus the accrued interest.
+
+\subsection{Floating Rate Bonds}
+As mentioned in 2.3, there might be cases where the coupon rate is variable, these are called \emph{Floating Rate Bonds} when the coupon rate is based on a benchmark rate such as US Treasury Rates, LIBOR, etc.
+
+With Floating Rate Bonds, the coupon rate is based on the n-month spread of the benchmark rate and the payment rate. The formula on \eqref{varcouponprice} holds, keeping in mind that many times the coupon rate is not known until halfway into the period.
+
+Assuming a spread of 0, and evaluation times resetting maturities, we can assume Floating Rate Bonds always trade at par. However, pricing in general terms can also be described with the formula in \eqref{frb}.
+
+\begin{equation}\label{frb}
+\mbox{FRB}(t,T) = 100 + \frac{s \cdot N}{n}\sum_{i=1}^m Z(t, t + i/n)
+\end{equation}
+Where:
+\begin{itemize}
+\item $s$ is the spread,
+\item $N$ is the face value,
+\item $n$ is the coupon payment frequency (number of coupon payments a year), and
+\item $T>= t+m/n$.
+\end{itemize}
+\end{document}
