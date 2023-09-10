@@ -1,26 +1,50 @@
-\contentsline {section}{\numberline {1}Debt Instruments and Markets}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Overview and Types}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Complexities}{2}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Sovereign Debt Markets}{2}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}The Money Market}{2}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}The Repo Market}{3}{subsection.1.5}%
-\contentsline {subsubsection}{\numberline {1.5.1}Repo}{3}{subsubsection.1.5.1}%
-\contentsline {subsubsection}{\numberline {1.5.2}Reverse Repo}{3}{subsubsection.1.5.2}%
-\contentsline {subsection}{\numberline {1.6}Arbitrage}{4}{subsection.1.6}%
-\contentsline {section}{\numberline {2}Present Value and Discounting}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Term Structure}{5}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Pricing of Bonds}{5}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Zero Coupon Bonds}{5}{subsubsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.3}Coupon Bonds}{5}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Arbitrage and Coupon Pricing}{6}{subsection.2.4}%
-\contentsline {section}{\numberline {3}Bond Yields}{6}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Zero Coupon Bonds}{6}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Coupon Bonds}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Yield To Maturity}{7}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Yield To Maturity and Coupon Rate}{7}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Curve Fitting}{7}{subsection.3.5}%
-\contentsline {section}{\numberline {4}Market Conventions}{7}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Quoting Conventions}{7}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Day Count Conventions}{8}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Accrued Interest}{8}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Floating Rate Bonds}{8}{subsection.4.4}%
+\contentsline {section}{\numberline {1}Debt Instruments and Markets}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Overview and Types}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Complexities}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Sovereign Debt Markets}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}The Money Market}{3}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}The Repo Market}{4}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Repo}{4}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Reverse Repo}{4}{subsubsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.6}Arbitrage}{5}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Present Value and Discounting}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Term Structure}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Pricing of Bonds}{6}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Zero Coupon Bonds}{6}{subsubsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.3}Coupon Bonds}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Arbitrage and Coupon Pricing}{7}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Bond Yields}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Zero Coupon Bonds}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Coupon Bonds}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Yield To Maturity}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Yield To Maturity and Coupon Rate}{8}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Curve Fitting}{8}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Market Conventions}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Quoting Conventions}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Day Count Conventions}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Accrued Interest}{9}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Floating Rate Bonds}{9}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Bond Price Sensitivity and Duration}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Other Factors Affecting Bond Price}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Duration}{10}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Duration of a Portfolio}{10}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Duration of a Coupon Bond}{11}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Remarks on Duration}{11}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Dollar Duration}{11}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Duration of Floating Rate Bonds}{12}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}An Important Property}{12}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}Other Durations}{12}{subsection.5.9}%
+\contentsline {subsubsection}{\numberline {5.9.1}Macaulay Duration}{12}{subsubsection.5.9.1}%
+\contentsline {subsubsection}{\numberline {5.9.2}Modified Duration}{12}{subsubsection.5.9.2}%
+\contentsline {subsubsection}{\numberline {5.9.3}Comparison Between Durations}{12}{subsubsection.5.9.3}%
+\contentsline {subsubsection}{\numberline {5.9.4}Asymptotic Behaviour of Macaulay Duration}{13}{subsubsection.5.9.4}%
+\contentsline {subsection}{\numberline {5.10}Continuous Compounding}{13}{subsection.5.10}%
+\contentsline {section}{\numberline {6}Risk Measurements}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Value at Risk (VaR)}{13}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Duration and VaR (Parametric VaR)}{13}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}Empirical (Non-Parametric) VaR}{14}{subsubsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.3}Comparing both methods of VaR calculation}{14}{subsubsection.6.1.3}%
+\contentsline {subsubsection}{\numberline {6.1.4}Warnings on VaR Calculation}{14}{subsubsection.6.1.4}%
+\contentsline {subsection}{\numberline {6.2}Expected Shortfall (ES)}{14}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Duration and ES (Parametric ES)}{15}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Empirical (Non-Parametric) ES}{15}{subsubsection.6.2.2}%

@@ -390,4 +390,299 @@ Where:
 \item $n$ is the coupon payment frequency (number of coupon payments a year), and
 \item $T>= t+m/n$.
 \end{itemize}
+
+\section{Bond Price Sensitivity and Duration}
+Going back to \eqref{couponprice} and \eqref{varcouponprice}, we see there are three main factors affecting the price of a bond.
+\begin{itemize}
+\item \textbf{Interest rate} $r$: As an element scaling the denominator of a discount factor, prices become lower when the interest is higher, i.e. $\partial P / \partial r < 0$.
+\item \textbf{Coupon rate} $c$: Commonly a fixed value, so for most of these notes it wouldn't be considered; however, in case it could be variable, the higher the coupon rate, the higher the price. i.e. $\partial P/ \partial c >=0$.
+\item \textbf{Maturity} $T$: Commonly fixed, follows the same logic as interest rate where $\partial P / \partial T < 0$.
+\end{itemize}
+
+Focusing on the interest rate, which is equal to the yield-to-maturity in zero-coupon bonds and positively correlated to the interest rate in coupon bonds, an increase in yield to maturity should also follow $\partial P/\partial y < 0$. I.e. as yield to maturity increases, bond prices decrease.
+
+\subsection{Other Factors Affecting Bond Price}
+Factors affecting not included in the pricing equation are the following.
+\begin{itemize}
+\item Reinvestment risk.
+\item Credit risk.
+\item Inflation risk.
+\item Liquidity risk.
+\item Legal or political risk.
+\end{itemize}
+
+\subsection{Duration}
+As mentioned in the introduction of Section 5, the main factor affecting bond prices is the level of interest rates. Additionally, it is safe to assume that bonds with long-term maturities are more susceptible to interest rate changes. A way to measure the sensitivity of a bond price to interest rate changes is \emph{duration}.
+
+\begin{definition}
+The \emph{\textbf{duration}} of a security is the sensitivity of a security to small, uniform changes in the yield curve (typically $1BP = 0.01\%$).
+\end{definition}
+
+From this definition, a higher duration implies a riskier bond.
+
+\begin{definition}
+The general equation for duration for a security with price $P$ is:
+
+\begin{equation}\label{generalduration}
+D_P = -\frac{1}{P}\frac{\partial P}{\partial r}
+\end{equation}
+
+Additionally, assuming $T$ and $c$ cannot vary, the differential of the price, $dP$ is:
+
+$$dP = \frac{\partial P}{\partial r} dr$$
+
+When dividing both sides by P, we get
+\begin{equation}\label{generaldurationdiff}
+\frac{dp}{P} = -D_p\cdot dr
+\end{equation}
+\end{definition}
+
+If we apply this general duration to a zero-coupon bond, we obtain that the duration of a zero-coupon bond is always its time to maturity $T - t$.
+
+\subsection{Duration of a Portfolio}
+
+Let $\mathbf{P}\in\mathbb{R}^n$ be a vector of prices of $n$ securities and $\mathbf{\phi}\in\mathbb{R}^n$ a vector of weights associated to each of those weights. The value of the portfolio $W$ is defined as 
+
+$$W = \mathbf{\phi}^\intercal\mathbf{P}$$
+
+i.e.
+
+$$W = \sum_{i=1}^n \phi_i P_i$$
+
+From \eqref{generalduration}, we get
+
+$$D_W= -\frac{1}{W}\sum_{i=1}^n \phi_i\frac{\partial P_i}{\partial r}$$
+
+Multiplying each term of the summation by $P_i/P_i$:
+
+$$D_W=\frac{1}{W}\sum_{i=1}^n \phi_i P_i\frac{-1}{P_i}\frac{\partial P_i}{\partial r} = D_W=\frac{1}{W}\sum_{i=1}^n \phi_i P_iD_{P_i}$$
+
+Defining a new set of weights$\left\lbrace w_i\right\rbrace_{i=1}^n$ where 
+
+$$w_i = \frac{\phi_i P_i}{W}$$
+
+We get
+\begin{eqnarray}\label{portfolioduration}
+D_W  = \sum_{i=1}^n w_i D_{P_i}\\w_i = \frac{\phi_i P_i}{W}
+\end{eqnarray}
+
+\subsection{Duration of a Coupon Bond}
+
+As explained in Section 3, any coupon bond can be replicated as a portfolio of weighted zero-coupon bonds. Therefore, we can derive from \eqref{portfolioduration} and (24), where $W$ is the price of the coupon bond $P_c(t,T)$, each $P_i$ the price of every equivalent zero coupon bond $P_z(t, T_i)$ and $phi_i$ being the coupon rate divided by the payment frequency (except for the case of the total maturity of the coupon bond, in such case, we add 1 to that term), we get that the duration of a coupon bond $D_c$ is defined as:
+\begin{equation}\label{couponduration}
+D_c  = \sum_{i=1}^m w_i D_{P_z(t, T_i)}
+\end{equation}
+
+Where:
+$$
+w_i = \frac{c/n \cdot P_z(t, T_i)}{P_c(t, T)},\mbox{  }w < m
+$$
+
+$$
+w_i = \frac{(1 + c/n) \cdot P_z(t, T_i)}{P_c(t, T)},\mbox{  }w = m
+$$
+
+\subsection{Remarks on Duration}
+
+Duration essentially tells how long does a bond take to be repaid by itself. For a zero coupon bond, it is only the maturity, for coupon bonds, cash flows are taken into account. Commonly, lower duration bonds are preferred as the investment is returned earlier. As a zero coupon bond does not have cash flows, given a zero coupon bond and a coupon bond with the same maturity $T$, the following always holds true.
+
+$$D_c(t, T) < D_z(t, T)$$
+
+If a bond with a price $P_O$ has a change on its interest rate resulting in a new price $P_N$, the following equation simplifies the results from \eqref{generaldurationdiff}.
+
+\begin{equation}\label{newgeneraldurationdiff}
+dP = P_N - P_O = - D\cdot P_O\cdot dr 
+\end{equation}
+
+\subsection{Dollar Duration}
+
+\emph{Dollar Duration} $D_P^\$$ is a measurement of change in price based on duration defined as 
+
+\begin{equation}\label{dollardur}
+D_P^\$ = D_p\cdot P
+\end{equation}
+
+Therefore, it fits our differential equation \eqref{generaldurationdiff} as follows.
+
+\begin{equation}\label{dollardurationdiff}
+dP = D_P^\$ \cdot dr
+\end{equation}
+
+It is also easy to prove that the dollar duration of a portfolio is the weighted sum of the dollar duration of its assets.
+
+\subsection{Duration of Floating Rate Bonds}
+Let $\left\lbrace T_i\right\rbrace_{i=1}^n$ be the set of reset times for a floating rate bond ant assume $T_i < t <T_{i+1}$ for any given $i$. Also, assume coupon payments are semi-annual. Also let $r_2(T_i, T_{i+1})$ be the reference rate determined at the last reset.
+
+The price of an FRB is given by
+
+$$
+\mbox{FRB}(t,T) = N\cdot Z(t,T_{i+1})\cdot\left( 1 +\frac{r_2(T_i, T_{i+1})}{2}\right)
+$$
+
+From the definition in \eqref{generalduration}, we get 
+$$
+D_{FRB}(t, T) = - N\cdot\left( 1 +\frac{r_2(T_i, T_{i+1})}{2}\right)\cdot\frac{1}{\mbox{FRB}(t, T)}\cdot\frac{\partial Z(t, T_{i+1})}{\partial r}
+$$
+
+Simplifying the expression we get
+\begin{equation}\label{frbduration}
+D_{FRB}(t, T) = T_{i+1} - t
+\end{equation}
+
+Meaning the duration of the bond is not dependent on its maturity, but in its coupon payment frequency.
+
+\subsection{An Important Property}
+
+For any type of coupon bond, it always holds that $\partial D/\partial{c} < 0$. This might not be very intuitive in the beginning, but it is made clear as a higher coupon rate means lower sensitivity to interest rate and faster cashflows.
+
+\subsection{Other Durations}
+\subsubsection{Macaulay Duration}
+The \emph{Macaulay duration} is a duration based on the yield curve with a slightly different formula, being
+
+\begin{equation}\label{macaulay}
+D_{MC} = - \frac{(1 +y/n)}{P}\frac{\partial P}{\partial y}
+\end{equation}
+
+Some algebra shows that this can be represented as a weighted sum of zero-coupon bond durations as shown in \eqref{macaulaywsum}.
+
+\begin{equation}\label{macaulaywsum}
+D_{MC} = \sum_{i=1}^m w_i\cdot(T_i - t)
+\end{equation}
+
+Where
+
+\begin{equation}\label{macaulaycoefs}
+w_i = \begin{cases}
+\frac{1}{P}\left(\frac{Nc/n}{( 1 + y/n)^i}\right), \mbox{   } i < m \\
+\frac{1}{P}\left(\frac{N(1 + c/n)}{( 1 + y/n)^i}\right), \mbox{   } i = m 
+\end{cases}
+\end{equation}
+
+\subsubsection{Modified Duration}
+
+The \emph{Modified Duration} shows the change in duration for each percentage change in yield, it is defined as follows.
+
+\begin{equation}\label{modifieddur}
+D_{MD}(t, T) = \frac{D_{MC}}{(1 + y/n)}
+\end{equation}
+
+\subsubsection{Comparison Between Durations}
+\begin{itemize}
+\item The Macaulay Duration is expressed in years, the modified duration is expressed as a percentage.
+\item For $y>0$	it always follows that $D_{MD} < D_{MC}$
+\item Modified Duration is better with convex relationships while Macaulay is better with concave relations.
+\end{itemize}
+
+\subsubsection{Asymptotic Behaviour of Macaulay Duration}
+Macaulay Duration converges for large maturities i.e. $T\to\infty$ it can be proven that.
+
+\begin{equation}\label{macaulaylim}
+\lim_{T\to\infty} D_{MC}(t, T) = \frac{1}{n} + \frac{1}{y}
+\end{equation}
+
+Meaning it becomes independent of the coupon rate, but is still negatively correlated with the yield to maturity $y$. Compounding frequency will also reduce the duration as it accelerates cashflows.
+
+\subsection{Continuous Compounding}
+
+As with most of the formulas in this notebook, we can change the formula to use continuous compounding, this helps us not use yield to maturity depending on specific coupon rates or work in cases where YTM is fuzzily defined. Additionally, as continuous compounding uses exponential functions, analytic calculations and expressions are simplified when using continuous compounding.
+
+
+\section{Risk Measurements}
+Two main risk measurements are to be covered in this section: Value at Risk (VaR) and Expected Shortfall (ES). Each one of them will be covered in its own subsection.
+
+\subsection{Value at Risk (VaR)}
+
+\emph{Value at Risk} is a quantitative risk measurement for an asset or portfolio. It is statistically based on the concept of quantiles and tries to find the maximum possible loss in a period of length $n$ given a probability $\alpha$ (where alpha commonly takes values such as 95\%, 99\%, 99.5\%, 99.9\%, 99.99\%, etc)
+
+We can formally define VaR as follows.
+
+\begin{definition}\label{vardef}
+Let $L$ be a R.V. representing losses (i.e. $-L_T = P_T - P_0$. Let $T$ be a fixed time horizon and let $F_L(l; T) = \mathbb{P}(L_t\leq l)$. Then, the \emph{\textbf{Value at Risk}} for a horizon $T$ at a confidence level $\alpha\in [0,1)$ is defined as:
+\begin{equation}\label{varsettheory}
+\mbox{VaR}_\alpha(L_T) = \inf\left\lbrace l \in \mathbb{R}: \mathbb{P}(L_T \leq l)\right\rbrace
+\end{equation}
+or alternatively:
+\begin{equation}\label{varsettheory2}
+\mbox{VaR}_\alpha(L_T) = \inf\left\lbrace l \in \mathbb{R}: F_L(l; T)\geq 1 - \alpha\right\rbrace
+\end{equation}
+\end{definition}
+
+Some important remarks: 
+\begin{itemize}
+\item $\inf$ represents the infimum, in closed sets this is equivalent to the minimum, in open set it is the largest possible lower bound to the set.
+\item As VaR uses the cumulative probability function, it always holds that $\partial\mbox{VaR}/\partial \alpha \geq0$
+\item We expect that $\alpha$ percent of times, losses are smaller than the VaR. This means VaR is concerned with extreme events.
+\item VaR is just a quantile of a loss distribution, which can be parametric or non-parametric.
+\end{itemize}
+
+\subsubsection{Duration and VaR (Parametric VaR)}
+
+A change in a bond price can be expressed, from \eqref{generaldurationdiff} as 
+
+$$dP = - D_P\cdot P\cdot dr$$.
+
+From definition \ref{vardef}, knowing that $dP$ represents a difference in prices, we can say that $dP = -L_T$. Now let's assume $dr \sim N(\mu_r, \sigma_r^2$, then that would imply that $L\sim N(\mu_L, \sigma_L^2)$
+
+Where, from properties of the normal distribution, $\mu_L = D_P\cdot P \cdot \mu_r$ and $\sigma_L = D_P\cdot P\cdot\sigma_r$. Then we can define
+
+\begin{equation}\label{normalvar}
+\mbox{VaR}_\alpha(L_T) = \sigma_L \cdot z_\alpha +\mu_L
+\end{equation}
+
+Where $z_\alpha$ denotes the $\alpha$-th percentile of the standard normal distribution $N(0,1)$, also known as the value where the z-score is alpha.
+
+This approach can be done with other parametric distributions using the proper transformations for its parameters, but it is most commonly done with the normal distribution.
+
+\subsubsection{Empirical (Non-Parametric) VaR}
+
+Calculating empirical VaR is as simple as finding a quantile, the main problem lies in the preprocessing of the data. 
+
+Let's assume we have all daily interest rates. We can then compute $-L$, A.K.A. the change in prices $dP$ by using \eqref{generaldurationdiff}. Then the process is as simple as sorting the profits from high to low or losses from low to high and finding the $1-\alpha$ quantile using any statistical tool.
+
+\subsubsection{Comparing both methods of VaR calculation}
+
+In cases where $dr$ is not parametrically distributed, it is likely that the values of both VaR calculations differ largely, this is because the parametric approach assumes that $dr$ is parametrically (most commonly normally) distributed, if this were not to be the case, the difference between both calculations can be large. In general we can say that for \emph{Parametric VaR} the pros are easy computations and ease of use in models that assume normality, with the cons being that it is inaccurate if the data does not fit into a specific distribution.
+
+For the empirical approach, the advantages are that it will be consistently more accurate regardless of how the data is distributed, but it will also depend on sorting algorithms whose runtime increase with the number of data points, making it a heavier compute. An interesting approach to this is downsampling, but it would require an extra step of human knowedge, making the calculations faster but even less straightforward.
+
+\subsubsection{Warnings on VaR Calculation}
+\begin{itemize}
+\item VaR is a statistical measurement that relies on \emph{distributional assumption} and \emph{sampling}.
+\item There can be \emph{estimation errors} when estimating the parameters of parametric distributions.
+\item VaR explains nothing about losses exceeding the value of the estimated VaR.
+\item Heavy tails are problematic when trying to fit a normal distribution to discrete data.
+\item The expected VaR can be hard to estimate, it is better to set $\mu_P = 0$.
+\item Duration is concerned with small changes, VaR is concerned with large changes. If overall the magnitudes of $dr$ are large, using duration will yield inaccurate results.
+\end{itemize}
+
+\subsection{Expected Shortfall (ES)}
+VaR does not indicate how large a loss can become once the loss has exceeded the value set as threshold by the VaR. The \emph{Expected Shortfall}, also known as \emph{Conditional VaR} fixes this by taking into account all the losses further into the tail of the distribution. Expected shortfall seeks to answer "How large are the expected losses of a portfolio when we have exceeded the VaR value?".
+
+Expected Shortfall is also more accurate in cases with heavy tails or non-linearity. Formally, Expected Shortfall is defined as follows.
+
+\begin{definition}\label{expectedshortfalldef}
+Considering a portfolio with risky assets and a fixed time horizon $T-t$, and letting $F(l; T) = \mathbb{P}(L_t \leq l)$ where $L_T$ is a R.V. defined as $L_T=P_T - P_t$, the expected shortfall with confidence $\alpha$ and horizon $\tau$ is defined as follows.
+
+\begin{equation}\label{expectedshortfall}
+\mbox{ES}_\alpha(L_T;\tau ) = \left\langle L_T \vert L_T \geq \mbox{VaR}_\alpha(L_T)\right\rangle = \frac{1}{1-\alpha}\int_\alpha^1 \mbox{VaR}_u(L_T)\cdot du
+\end{equation}
+\end{definition}
+
+It is convenient to keep in handy Bayes Rule when calculating non-parametric Expected Shortfalls.
+
+\subsubsection{Duration and ES (Parametric ES)}
+
+Similarly to VaR, Expected Shortfall can be calculated parametrically and empirically. Following the same assumptions as with VaR, for an example wehre $dr$ is normally distributed, we get 
+
+\begin{equation}\label{parametrices}
+\mbox{ES}_\alpha(L_T) = \mu_L + \frac{\sigma_L}{1-\alpha} \cdot f(z_\alpha)
+\end{equation}
+
+Where $f$ is the probability distribution functionn value for $z_alpha$.
+
+\subsubsection{Empirical (Non-Parametric) ES}
+If we know the Value at Risk, the proces is as simple as taking the $\alpha$ percent of largest losses and dividing them by the number of smaller losses. i.e.
+\begin{equation}\label{empirices}
+\mbox{ES}_\alpha(L_T) \frac{\sum_{i=[n\alpha]}^n L_i}{[n(1-\alpha )]}
+\end{equation}
 \end{document}
